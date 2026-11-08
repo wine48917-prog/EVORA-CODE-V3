@@ -1,18 +1,23 @@
-# EVORA CODE V3.1 — Black Silver Edition
+# EVORA CODE V3.2 — Black Silver Edition
 
-Mobile-first coding workspace built with HTML, CSS and JavaScript.
+A mobile-first browser coding workspace by WINE 🍷.
+
+## V3.2 updates
+- Run opens the project in a completely separate browser tab/page, outside the EVORA CODE workspace.
+- The standalone run page includes Reload and Close controls.
+- Added visible ownership notice: © 2026 EVORA CODE · A product by WINE 🍷 · All rights reserved.
+- The editor workspace remains open in its original tab.
 
 ## Features
-- Black / silver responsive interface with separate developer sidebar and bottom navigation
-- Syntax-highlighted editor for HTML, CSS and JavaScript (Prism CDN)
-- File explorer, create-file flow, live preview, local autosave and source export
-- Notes workspace: create multiple named notes, edit, autosave and delete
-- PWA manifest and custom app icon
+- HTML, CSS and JavaScript starter workspace
+- Syntax highlighting (Prism CDN)
+- Local project file storage and source export
+- Multiple local notes with autosave
+- Separate run page and optional in-app preview
+- Black and silver responsive UI
 
-## Run
-Open `index.html` in a modern browser or serve this folder using a local web server.
-
-## Storage and limitations
-Project files and notes are saved in browser local storage on this device. Export important files regularly. Syntax-coloring grammar loads from a CDN. Notes replace the previous EVORA AI chat; there is no live AI connection in this build.
-
-This is the web source ZIP, not a compiled APK. See `ANDROID-NEXT-STEPS.md` for the Android packaging path.
+## Notes
+- Syntax highlighting uses Prism from a CDN and needs an internet connection.
+- Projects and notes are stored in this browser's local storage. Export your source before clearing browser data.
+- Run opens a new browser tab. If it does not open, allow pop-ups for the site/browser.
+- This is a web app package, not an APK.

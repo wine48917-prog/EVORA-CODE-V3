@@ -104,7 +104,7 @@ function escapeHTML(value){return value.replace(/&/g,'&amp;').replace(/</g,'&lt;
 function highlight(){const value=$('code').value,ext=active.split('.').pop().toLowerCase(),lang=ext==='html'||ext==='htm'?'markup':ext==='css'?'css':(['js','jsx','ts','tsx','mjs'].includes(ext)?'javascript':null),grammar=lang&&window.Prism&&Prism.languages[lang];$('highlightCode').innerHTML=grammar?Prism.highlight(value,grammar,lang):escapeHTML(value);if(value.endsWith('\\n'))$('highlightCode').innerHTML+=' ';}
 
 function lines(){const v=$('code').value;$('numbers').textContent=Array.from({length:Math.max(1,v.split('\n').length)},(_,i)=>i+1).join('\n');$('charCount').textContent=v.length+' characters';highlight()}
-function preview(){let h=data['index.html']||'<h1>Create index.html to start</h1>',c=data['style.css']||'',j=data['app.js']||'';h=h.replace('</head>',`<style>${c.replace(/<\/style/gi,'<\\/style')}
+function buildPreviewDocument(){let h=data['index.html']||'<h1>Create index.html to start</h1>',c=data['style.css']||'',j=data['app.js']||'';h=h.replace('</head>',`<style>${c.replace(/<\/style/gi,'<\\/style')}
 .codewrap{position:relative;flex:1;min-width:0;overflow:hidden}
 .codewrap .highlight,.codewrap .code{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0 12px 30px 0;border:0;white-space:pre;tab-size:2;overflow:auto;font:12px/22px ui-monospace,SFMono-Regular,Consolas,monospace}
 .codewrap .highlight{pointer-events:none;color:#cbd3de;background:transparent}.codewrap .highlight code{font:inherit}
@@ -141,12 +141,26 @@ function preview(){let h=data['index.html']||'<h1>Create index.html to start</h1
 .note-title:disabled,.note-body:disabled{opacity:.4}
 .note-foot{height:34px;border-top:1px solid #252c35;display:flex;align-items:center;justify-content:space-between;color:#74808e;font-size:9px}
 @media(max-width:700px){.codewrap .highlight,.codewrap .code{font-size:11px;line-height:20px;padding-right:8px}.notes-heading{align-items:flex-start}.notes-layout{grid-template-columns:1fr;grid-template-rows:minmax(120px,35%) minmax(240px,1fr)}.notes-list{display:flex;gap:6px;max-height:none;overflow-x:auto;overflow-y:hidden}.note-item{min-width:145px;max-width:180px;height:66px;margin:0}.note-editor{min-height:250px}.note-title{font-size:19px}}
-</style></head>`).replace('</body>',`<script>${j.replace(/<\/script/gi,'<\\/script')}<\/script></body>`);$('frame').srcdoc=h}
+</style>\n</head>`).replace('</body>',`<script>${j.replace(/<\/script/gi,'<\\/script')}<\/script></body>`);return h}
+function preview(){ $('frame').srcdoc=buildPreviewDocument() }
+function runInNewTab(){
+  const output=buildPreviewDocument();
+  const win=window.open('about:blank','_blank');
+  if(!win){toast('Allow pop-ups to open the run page');return}
+  const shell=`<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090a0c"><title>EVORA CODE — Run Preview</title><style>
+  *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#090a0c;color:#e9edf3;font-family:Arial,sans-serif}.run-shell{height:100dvh;display:flex;flex-direction:column;overflow:hidden}.run-head{height:54px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#101318;border-bottom:1px solid #303743}.run-brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em}.run-mark{width:28px;height:28px;border:1px solid #9ba6b5;border-radius:8px;display:grid;place-items:center;color:#f1f4f8;background:linear-gradient(145deg,#343c48,#11151b);font-size:17px}.run-label{font-size:9px;letter-spacing:.16em;color:#8994a2;margin-left:8px}.run-actions{display:flex;gap:7px}.run-actions button{border:1px solid #414b59;border-radius:6px;padding:8px 11px;background:#1a2029;color:#dce2e9;font-size:10px;cursor:pointer}.run-actions button.primary{background:#dce2e9;color:#11151b;border-color:#dce2e9;font-weight:700}.run-content{flex:1;min-height:0;background:#fff}.run-content iframe{width:100%;height:100%;border:0;display:block;background:white}.run-foot{min-height:34px;flex:none;display:flex;align-items:center;justify-content:center;padding:7px 12px;background:#101318;border-top:1px solid #303743;color:#8e99a7;font-size:9px;letter-spacing:.04em;text-align:center}.run-foot strong{color:#cbd2dc;font-weight:600}.run-foot .wine{color:#b9c2ce;margin:0 4px}@media(max-width:480px){.run-head{height:50px;padding:0 10px}.run-label{display:none}.run-actions button{padding:7px 9px;font-size:9px}.run-brand{font-size:10px}.run-foot{font-size:8px}}
+  </style></head><body><div class="run-shell"><header class="run-head"><div class="run-brand"><span class="run-mark">E</span><span>EVORA CODE</span><span class="run-label">RUN PREVIEW</span></div><div class="run-actions"><button id="reloadRun">↻ &nbsp; Reload</button><button class="primary" id="closeRun">✕ &nbsp; Close</button></div></header><main class="run-content"><iframe id="runOutput" title="Your project running" sandbox="allow-scripts allow-forms allow-modals allow-popups"></iframe></main><footer class="run-foot">© 2026 <strong>EVORA CODE</strong><span class="wine">·</span> A product by <strong>WINE 🍷</strong><span class="wine">·</span> All rights reserved.</footer></div></body></html>`;
+  win.document.open();win.document.write(shell);win.document.close();
+  win.document.getElementById('runOutput').srcdoc=output;
+  win.document.getElementById('reloadRun').onclick=()=>{win.document.getElementById('runOutput').srcdoc=output};
+  win.document.getElementById('closeRun').onclick=()=>win.close();
+  try{win.opener=null}catch(e){}
+}
 function page(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='editorView'){$('editorView').style.display='flex';$('editorView').style.flexDirection='column'}else{$('editorView').style.display='none';$(id).classList.add('active')}if(id==='preview')preview()}
 $('code').addEventListener('input',e=>{data[active]=e.target.value;lines();persist()});$('code').addEventListener('scroll',()=>{const a=$('code'),b=document.querySelector('.highlight');b.scrollTop=a.scrollTop;b.scrollLeft=a.scrollLeft});
 $('code').addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();let a=e.target.selectionStart,b=e.target.selectionEnd;e.target.setRangeText('  ',a,b,'end');e.target.dispatchEvent(new Event('input'))}});
 document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>page(b.dataset.page));
-$('run').onclick=()=>{page('preview');toast('Preview refreshed')};$('refresh').onclick=()=>{preview();toast('Preview refreshed')};
+$('run').onclick=runInNewTab;$('refresh').onclick=()=>{preview();toast('Preview refreshed')};
 $('save').onclick=()=>{persist();toast('Workspace saved')};
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(data[active]);toast('Code copied')}catch(e){toast('Clipboard unavailable')}};
 function exportProject(){const blob=new Blob([Object.entries(data).map(([n,c])=>`/* ===== ${n} ===== */\n${c}`).join('\n\n')],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='evora-code-project-source.txt';a.click();URL.revokeObjectURL(a.href);toast('Source export downloaded')}
