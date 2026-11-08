@@ -22,3 +22,13 @@ Workspace files and notes are stored in this browser's local storage on this dev
 
 ## Rights
 © 2026 EVORA CODE — A product by WINE 🍷. All rights reserved.
+
+
+## V3.3 Mobile Edition
+The interface now prioritizes phone-sized screens:
+- Compact mobile header and touch-sized editor controls.
+- Sidebar starts closed and opens as an overlay drawer.
+- Dedicated bottom navigation with safe-area spacing.
+- Mobile-optimized code editor, Notes, Projects, Preview, and Account layouts.
+- Responsive notes list and editor layout.
+- Reduced-motion support and touch-friendly scrolling.

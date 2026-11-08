@@ -47,11 +47,114 @@
 .note-title:disabled,.note-body:disabled{opacity:.4}
 .note-foot{height:34px;border-top:1px solid #252c35;display:flex;align-items:center;justify-content:space-between;color:#74808e;font-size:9px}
 @media(max-width:700px){.codewrap .highlight,.codewrap .code{font-size:11px;line-height:20px;padding-right:8px}.notes-heading{align-items:flex-start}.notes-layout{grid-template-columns:1fr;grid-template-rows:minmax(120px,35%) minmax(240px,1fr)}.notes-list{display:flex;gap:6px;max-height:none;overflow-x:auto;overflow-y:hidden}.note-item{min-width:145px;max-width:180px;height:66px;margin:0}.note-editor{min-height:250px}.note-title{font-size:19px}}
+
+/* EVORA CODE — Mobile-first workspace refinement */
+:root{color-scheme:dark;--safe-bottom:env(safe-area-inset-bottom,0px)}
+html,body{width:100%;height:100%;overscroll-behavior:none}
+body{min-width:320px;overflow:hidden;-webkit-tap-highlight-color:transparent}
+button{touch-action:manipulation}
+.app{height:100dvh;min-height:0;padding-bottom:0}
+.top{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.workspace{position:relative;overflow:hidden}
+.main{min-height:0;overflow:hidden}
+.bottom{height:calc(62px + var(--safe-bottom));padding-bottom:var(--safe-bottom);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);z-index:4}
+.bottom button{min-width:0;gap:3px;font-weight:600;letter-spacing:.01em}
+.bottom button .ico{line-height:1.1}
+.bottom button.active{color:#f4f6f8}
+.bottom button.active .ico{color:#d6dde6;text-shadow:0 0 16px #c5cedb55}
+.mobilemenu{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;margin:0 3px 0 -5px}
+.mobilemenu:active,.tools button:active,.bottom button:active{background:#29313c}
+.page{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.editor{padding-top:8px}
+.codewrap .highlight,.codewrap .code{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.side{overscroll-behavior:contain}
+.toast{bottom:calc(72px + var(--safe-bottom));max-width:calc(100vw - 28px);white-space:normal;text-align:center}
+.modal{padding: max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
+.dialog{max-height:calc(100dvh - 40px);overflow:auto}
+@media(max-width:700px){
+  .top{height:56px;min-height:56px;padding-top:env(safe-area-inset-top);height:calc(56px + env(safe-area-inset-top))}
+  .brand{gap:8px}.mark{width:30px;height:30px;border-radius:9px}
+  .brand b{font-size:11px;letter-spacing:.12em}.brand small{font-size:7px}
+  .topright{gap:6px}.avatar{width:32px;height:32px}
+  .workspace{isolation:isolate}
+  .side{position:absolute;z-index:6;top:0;bottom:0;left:0;width:min( min(300px,84vw), 300px);height:100%;padding-bottom:10px;border-right:1px solid #3a424e;box-shadow:20px 0 55px #000b;transform:translateX(-105%);visibility:hidden;transition:transform .22s ease,visibility .22s ease}
+  .side:not(.hidden){transform:translateX(0);visibility:visible}
+  .side.hidden{display:flex;transform:translateX(-105%);visibility:hidden}
+  .app.sidebar-open .workspace:after{content:"";position:absolute;inset:0;background:#0009;backdrop-filter:blur(2px);z-index:5}
+  .sidehead{height:50px;flex:none;padding:0 16px}
+  .sidehead button{width:34px;height:34px;border-radius:9px;font-size:18px}
+  .tree{height:42px;padding:0 14px;font-size:10px}
+  .files{overflow:auto;padding:2px 9px 12px}
+  .file{height:42px;font-size:12px;padding:0 12px;border-radius:8px}
+  .sidehint{font-size:10px;padding:12px;margin:10px 12px 14px}
+  .sidefoot{padding:12px}
+  .tabs{height:48px;min-height:48px}
+  .tab{height:48px;padding:0 12px;font-size:11px}
+  .tools{gap:3px;padding-right:8px}
+  .tools button{min-width:36px;min-height:36px;display:grid;place-items:center;font-size:13px}
+  .tools .run{min-width:68px;min-height:36px;padding:0 11px;border-radius:8px;font-size:10px}
+  .editor{padding-top:9px}
+  .numbers{width:35px;padding-right:9px;font-size:10px;line-height:22px}
+  .codewrap .highlight,.codewrap .code{font-size:12px;line-height:22px;padding-left:0;padding-right:14px}
+  .status{height:25px;gap:9px;padding:0 9px;white-space:nowrap;overflow:hidden}
+  .status span:nth-child(3),.status span:nth-child(4){display:none}
+  .panel{height:76px;min-height:76px;padding:8px 11px;font-size:10px;overflow:auto}
+  .panelhead{margin-bottom:8px;font-size:9px}
+  #terminalText{line-height:1.5}
+  .page{padding:22px 15px calc(24px + var(--safe-bottom))}
+  .page h1{font-size:43px;line-height:1.03}
+  .page p{font-size:12px;line-height:1.65}
+  .card{margin-top:18px;gap:10px;flex-wrap:wrap}
+  .cardicon{width:40px;height:40px}
+  .cardmain{min-width:0}
+  .cardmain b{font-size:10px}.cardmain small{font-size:9px;line-height:1.4}
+  .card .primary{margin-left:auto}
+  .notes-wrap{min-height:100%;height:auto}
+  .notes-heading{align-items:center;margin-bottom:14px}
+  .notes-heading h1{font-size:42px;margin:9px 0}
+  .notes-heading p{margin:0}
+  .notes-heading .primary{padding:10px 11px;white-space:nowrap;font-size:9px}
+  .notes-layout{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1}
+  .notes-list-panel{flex:none}
+  .notes-list-title{height:38px}
+  .notes-list{display:flex;gap:7px;max-height:none;min-height:74px;overflow-x:auto;overflow-y:hidden;padding:7px}
+  .note-item{flex:0 0 150px;min-width:150px;max-width:180px;height:58px;padding:9px;margin:0}
+  .note-item b{font-size:10px}.note-item small{font-size:8px}
+  .notes-empty{min-width:100%;padding:12px 8px}
+  .note-editor{min-height:clamp(270px,46dvh,460px);flex:1;padding:0 13px}
+  .note-editor-top{height:43px;flex:none}
+  .note-title{font-size:19px;padding:16px 0 12px}
+  .note-body{font-size:13px;line-height:1.7;min-height:160px}
+  .previewbar{gap:8px;flex-wrap:wrap;font-size:9px;margin:0 0 10px;padding-bottom:10px}
+  .previewbar span{font-size:8px}
+  .previewbar .primary{padding:9px 11px}
+  .previewframe{height:calc(100% - 42px);min-height:250px;border-radius:8px}
+  .profile{margin:12px auto 20px}
+  .settings{margin:18px auto}
+  .settings button{min-height:52px;padding:14px;font-size:11px}
+  .bottom{height:calc(64px + var(--safe-bottom))}
+  .bottom button{font-size:9px;gap:4px}
+  .bottom .ico{font-size:19px}
+}
+@media(max-width:380px){
+  .bottom button{font-size:8px}
+  .bottom .ico{font-size:17px}
+  .tools .run{min-width:60px;padding:0 8px}
+  .notes-heading .primary{font-size:8px;padding:9px}
+  .notes-heading h1{font-size:38px}
+}
+@media(min-width:701px){
+  .side{display:flex!important;position:static;transform:none;visibility:visible}
+}
+@media(prefers-reduced-motion:reduce){
+  .side{transition:none!important}
+}
+
 </style></head>
-<body><div class="app">
-<header class="top"><div class="brand"><button class="mobilemenu" id="menu">☰</button><div class="mark">E</div><div><b>EVORA<span>CODE</span></b><small>VERSION 3.2</small></div></div><div class="topright"><span class="save">● &nbsp;LOCAL WORKSPACE</span><button class="avatar" id="settingsOpen">W</button></div></header>
+<body><div class="app" id="appRoot">
+<header class="top"><div class="brand"><button class="mobilemenu" id="menu">☰</button><div class="mark">E</div><div><b>EVORA<span>CODE</span></b><small>VERSION 3.3 MOBILE</small></div></div><div class="topright"><span class="save">● &nbsp;LOCAL WORKSPACE</span><button class="avatar" id="settingsOpen">W</button></div></header>
 <div class="workspace"><aside class="rail"><button class="active" title="Explorer">▤</button><button title="Search" id="searchTool">⌕</button><button title="Source control">⑂</button><button title="Extensions">◇</button><button title="Settings" id="settingsRail">⚙</button></aside>
-<aside class="side" id="sidebar"><div class="sidehead">EXPLORER <button id="hideSide">×</button></div><div class="tree">⌄ &nbsp; MY FIRST PROJECT <span class="treeactions"><button id="newFile">＋</button><button id="export">⇩</button></span></div><div class="files" id="files"></div><div class="sidehint">✦ &nbsp; Your workspace is saved locally on this device.</div><div class="sidefoot"><span>⑂ main</span><span>EVORA V3.2</span></div></aside>
+<aside class="side hidden" id="sidebar"><div class="sidehead">EXPLORER <button id="hideSide">×</button></div><div class="tree">⌄ &nbsp; MY FIRST PROJECT <span class="treeactions"><button id="newFile">＋</button><button id="export">⇩</button></span></div><div class="files" id="files"></div><div class="sidehint">✦ &nbsp; Your workspace is saved locally on this device.</div><div class="sidefoot"><span>⑂ main</span><span>EVORA V3.2</span></div></aside>
 <main class="main">
 <section id="editorView" style="display:flex;flex-direction:column;flex:1;min-height:0"><div class="tabs"><div class="tab">◇ <span id="tabName">index.html</span></div><div class="tools"><button id="copy">▢</button><button id="save">✓</button><button class="run" id="run">▶ &nbsp; Run</button></div></div><div class="editor"><div class="numbers" id="numbers"></div><div class="codewrap"><pre class="highlight" aria-hidden="true"><code id="highlightCode"></code></pre><textarea class="code" id="code" spellcheck="false" aria-label="Code editor" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea></div></div><div class="status"><span>⑂ main</span><span id="charCount">0 characters</span><span>UTF-8</span><span>Spaces: 2</span></div><div class="panel"><div class="panelhead"><span>TERMINAL &nbsp;&nbsp; PROBLEMS &nbsp;&nbsp; OUTPUT</span><span id="panelStatus">READY</span></div><div id="terminalText">evora@workspace ~ $ &nbsp; Ready. Select a file and start building.</div></div></section>
 <section class="page" id="projects"><span class="eyebrow">YOUR WORKSPACE</span><h1>Projects<span style="color:#929dab">.</span></h1><p>Everything you build, in one place.</p><div class="card"><div class="cardicon">⌘</div><div class="cardmain"><b>MY FIRST PROJECT</b><small>Web project · Local workspace · Recently opened</small></div><button class="primary" id="openEditor">OPEN</button></div><p>Your projects are stored in this browser. Export your source before clearing browser data.</p></section>
@@ -62,7 +165,7 @@
 <input id="noteTitle" class="note-title" placeholder="Untitled note" disabled><textarea id="noteBody" class="note-body" placeholder="Start writing your thoughts..." disabled></textarea>
 <div class="note-foot"><span>Saved on this device</span><span id="noteUpdated">LOCAL NOTES</span></div></div></div></div></section>
 <section class="page" id="preview"><div class="previewbar"><b>● &nbsp; LIVE PREVIEW</b><span>WORKSPACE / BROWSER</span><button id="refresh" class="primary">REFRESH</button></div><div class="previewframe"><iframe id="frame" title="Live project preview" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-downloads"></iframe></div></section>
-<section class="page" id="account"><div class="profile"><div class="avatarbig">W</div><span class="eyebrow">PERSONAL WORKSPACE</span><h1>Welcome back.</h1><p>Your creative space is ready when you are.</p></div><div class="settings"><button id="accountSettings">⚙ &nbsp; Workspace settings</button><button id="accountExport">⇩ &nbsp; Export project source</button><button>ⓘ &nbsp; EVORA CODE V3.2 · Black Silver Edition</button></div></section>
+<section class="page" id="account"><div class="profile"><div class="avatarbig">W</div><span class="eyebrow">PERSONAL WORKSPACE</span><h1>Welcome back.</h1><p>Your creative space is ready when you are.</p></div><div class="settings"><button id="accountSettings">⚙ &nbsp; Workspace settings</button><button id="accountExport">⇩ &nbsp; Export project source</button><button>ⓘ &nbsp; EVORA CODE V3.3 · Mobile Edition</button></div></section>
 </main></div>
 <nav class="bottom"><button class="active" data-page="editorView"><span class="ico">▦</span>Home</button><button data-page="projects"><span class="ico">▣</span>Projects</button><button data-page="ai"><span class="ico">▤</span>Notes</button><button data-page="preview"><span class="ico">◉</span>Preview</button><button data-page="account"><span class="ico">◌</span>Account</button></nav>
 <div class="modal" id="settingsModal"><div class="dialog"><div style="display:flex;justify-content:space-between"><div><span class="eyebrow">PREFERENCES</span><h2 style="font:600 23px 'Space Grotesk'">Workspace settings</h2></div><button id="settingsClose" style="background:none;border:0;color:#aab4c2">✕</button></div><label style="font-size:10px;color:#aeb8c4">Project name<input value="MY FIRST PROJECT" id="projectName"></label><p style="font-size:10px;color:#87919e">Black Silver Edition · Local autosave enabled</p><button class="primary" id="settingsSave" style="width:100%">SAVE PREFERENCES</button></div></div>
@@ -155,7 +258,12 @@ function exportProject(){const blob=new Blob([Object.entries(data).map(([n,c])=>
 $('export').onclick=exportProject;$('accountExport').onclick=exportProject;
 $('newFile').onclick=()=>$('fileModal').classList.add('show');$('fileClose').onclick=()=>$('fileModal').classList.remove('show');
 $('fileCreate').onclick=()=>{const n=$('fileName').value.trim();if(!n)return;if(Object.prototype.hasOwnProperty.call(data,n)){toast('File already exists');return}data[n]='// '+n+'\n';persist();selectFile(n);$('fileModal').classList.remove('show');$('fileName').value='';toast('File created')};
-$('menu').onclick=()=>$('sidebar').classList.toggle('hidden');$('hideSide').onclick=()=>$('sidebar').classList.add('hidden');
+function closeMobileSidebar(){$('sidebar').classList.add('hidden');$('appRoot')?.classList.remove('sidebar-open')}
+function toggleMobileSidebar(){const opening=$('sidebar').classList.contains('hidden');$('sidebar').classList.toggle('hidden');$('appRoot')?.classList.toggle('sidebar-open',opening)}
+$('menu').onclick=toggleMobileSidebar;
+$('hideSide').onclick=closeMobileSidebar;
+document.addEventListener('click',e=>{if(window.matchMedia('(max-width:700px)').matches&&$('appRoot')?.classList.contains('sidebar-open')&&!$('sidebar').contains(e.target)&&!$('menu').contains(e.target))closeMobileSidebar()});
+document.querySelectorAll('.bottom button').forEach(b=>b.addEventListener('click',closeMobileSidebar));
 function openSettings(){$('settingsModal').classList.add('show')}$('settingsOpen').onclick=openSettings;$('settingsRail').onclick=openSettings;$('accountSettings').onclick=openSettings;$('settingsClose').onclick=()=>$('settingsModal').classList.remove('show');$('settingsSave').onclick=()=>{$('settingsModal').classList.remove('show');toast('Preferences saved')};
 $('openEditor').onclick=()=>page('editorView');
 renderFiles();selectFile(active);persist();
