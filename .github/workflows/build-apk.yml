@@ -7,6 +7,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build Android APK
@@ -25,34 +28,66 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build web app
-        run: npm run build --if-present
-
-      - name: Setup Android project
+      - name: Find EVORA project folder
+        shell: bash
         run: |
-          if [ ! -d android ]; then
-            npm install @capacitor/core @capacitor/cli @capacitor/android
-            npx cap init "EVORA CODE" "com.wine.evoracode" --web-dir=dist
-            npx cap add android
+          INDEX_FILE=$(find . -maxdepth 4 -type f -name index.html \
+            -not -path '*/node_modules/*' | head -n 1)
+
+          if [ -z "$INDEX_FILE" ]; then
+            echo "ERROR: index.html not found"
+            exit 1
           fi
 
-      - name: Sync Capacitor
-        run: npx cap sync android
+          APP_DIR=$(dirname "$INDEX_FILE")
+          echo "APP_DIR=$APP_DIR" >> "$GITHUB_ENV"
+          echo "Found project in: $APP_DIR"
+
+      - name: Prepare Capacitor
+        shell: bash
+        run: |
+          cd "$APP_DIR"
+
+          npm init -y
+
+          npm install @capacitor/core@7 \
+            @capacitor/android@7 \
+            @capacitor/cli@7
+
+          mkdir -p www
+
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name www \
+            ! -name android \
+            ! -name node_modules \
+            ! -name .git \
+            ! -name .github \
+            ! -name package.json \
+            ! -name package-lock.json \
+            -exec cp -R {} www/ \;
+
+          npx cap init "EVORA CODE" "com.wine.evoracode" --web-dir=www
+
+          npx cap add android
+
+      - name: Sync Android
+        run: |
+          cd "$APP_DIR"
+          npx cap sync android
 
       - name: Build APK
         run: |
-          cd android
+          cd "$APP_DIR/android"
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Upload APK
+      - name: Upload EVORA APK
         uses: actions/upload-artifact@v4
         with:
-          name: EVORA-CODE-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: EVORA-CODE-ANDROID
+          path: ${{ env.APP_DIR }}/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
           
