@@ -49,9 +49,9 @@
 @media(max-width:700px){.codewrap .highlight,.codewrap .code{font-size:11px;line-height:20px;padding-right:8px}.notes-heading{align-items:flex-start}.notes-layout{grid-template-columns:1fr;grid-template-rows:minmax(120px,35%) minmax(240px,1fr)}.notes-list{display:flex;gap:6px;max-height:none;overflow-x:auto;overflow-y:hidden}.note-item{min-width:145px;max-width:180px;height:66px;margin:0}.note-editor{min-height:250px}.note-title{font-size:19px}}
 </style></head>
 <body><div class="app">
-<header class="top"><div class="brand"><button class="mobilemenu" id="menu">☰</button><div class="mark">E</div><div><b>EVORA<span>CODE</span></b><small>VERSION 3.0</small></div></div><div class="topright"><span class="save">● &nbsp;LOCAL WORKSPACE</span><button class="avatar" id="settingsOpen">W</button></div></header>
+<header class="top"><div class="brand"><button class="mobilemenu" id="menu">☰</button><div class="mark">E</div><div><b>EVORA<span>CODE</span></b><small>VERSION 3.2</small></div></div><div class="topright"><span class="save">● &nbsp;LOCAL WORKSPACE</span><button class="avatar" id="settingsOpen">W</button></div></header>
 <div class="workspace"><aside class="rail"><button class="active" title="Explorer">▤</button><button title="Search" id="searchTool">⌕</button><button title="Source control">⑂</button><button title="Extensions">◇</button><button title="Settings" id="settingsRail">⚙</button></aside>
-<aside class="side" id="sidebar"><div class="sidehead">EXPLORER <button id="hideSide">×</button></div><div class="tree">⌄ &nbsp; MY FIRST PROJECT <span class="treeactions"><button id="newFile">＋</button><button id="export">⇩</button></span></div><div class="files" id="files"></div><div class="sidehint">✦ &nbsp; Your workspace is saved locally on this device.</div><div class="sidefoot"><span>⑂ main</span><span>EVORA V3</span></div></aside>
+<aside class="side" id="sidebar"><div class="sidehead">EXPLORER <button id="hideSide">×</button></div><div class="tree">⌄ &nbsp; MY FIRST PROJECT <span class="treeactions"><button id="newFile">＋</button><button id="export">⇩</button></span></div><div class="files" id="files"></div><div class="sidehint">✦ &nbsp; Your workspace is saved locally on this device.</div><div class="sidefoot"><span>⑂ main</span><span>EVORA V3.2</span></div></aside>
 <main class="main">
 <section id="editorView" style="display:flex;flex-direction:column;flex:1;min-height:0"><div class="tabs"><div class="tab">◇ <span id="tabName">index.html</span></div><div class="tools"><button id="copy">▢</button><button id="save">✓</button><button class="run" id="run">▶ &nbsp; Run</button></div></div><div class="editor"><div class="numbers" id="numbers"></div><div class="codewrap"><pre class="highlight" aria-hidden="true"><code id="highlightCode"></code></pre><textarea class="code" id="code" spellcheck="false" aria-label="Code editor" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea></div></div><div class="status"><span>⑂ main</span><span id="charCount">0 characters</span><span>UTF-8</span><span>Spaces: 2</span></div><div class="panel"><div class="panelhead"><span>TERMINAL &nbsp;&nbsp; PROBLEMS &nbsp;&nbsp; OUTPUT</span><span id="panelStatus">READY</span></div><div id="terminalText">evora@workspace ~ $ &nbsp; Ready. Select a file and start building.</div></div></section>
 <section class="page" id="projects"><span class="eyebrow">YOUR WORKSPACE</span><h1>Projects<span style="color:#929dab">.</span></h1><p>Everything you build, in one place.</p><div class="card"><div class="cardicon">⌘</div><div class="cardmain"><b>MY FIRST PROJECT</b><small>Web project · Local workspace · Recently opened</small></div><button class="primary" id="openEditor">OPEN</button></div><p>Your projects are stored in this browser. Export your source before clearing browser data.</p></section>
@@ -61,8 +61,8 @@
 <div class="note-editor"><div class="note-editor-top"><span id="noteState">SELECT A NOTE</span><div><button id="deleteNote" class="note-action" disabled>DELETE</button><button id="saveNote" class="note-action" disabled>SAVE</button></div></div>
 <input id="noteTitle" class="note-title" placeholder="Untitled note" disabled><textarea id="noteBody" class="note-body" placeholder="Start writing your thoughts..." disabled></textarea>
 <div class="note-foot"><span>Saved on this device</span><span id="noteUpdated">LOCAL NOTES</span></div></div></div></div></section>
-<section class="page" id="preview"><div class="previewbar"><b>● &nbsp; LIVE PREVIEW</b><span>WORKSPACE / BROWSER</span><button id="refresh" class="primary">REFRESH</button></div><div class="previewframe"><iframe id="frame" title="Live project preview" sandbox="allow-scripts allow-forms allow-modals"></iframe></div></section>
-<section class="page" id="account"><div class="profile"><div class="avatarbig">W</div><span class="eyebrow">PERSONAL WORKSPACE</span><h1>Welcome back.</h1><p>Your creative space is ready when you are.</p></div><div class="settings"><button id="accountSettings">⚙ &nbsp; Workspace settings</button><button id="accountExport">⇩ &nbsp; Export project source</button><button>ⓘ &nbsp; EVORA CODE V3.0 · Black Silver Edition</button></div></section>
+<section class="page" id="preview"><div class="previewbar"><b>● &nbsp; LIVE PREVIEW</b><span>WORKSPACE / BROWSER</span><button id="refresh" class="primary">REFRESH</button></div><div class="previewframe"><iframe id="frame" title="Live project preview" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-downloads"></iframe></div></section>
+<section class="page" id="account"><div class="profile"><div class="avatarbig">W</div><span class="eyebrow">PERSONAL WORKSPACE</span><h1>Welcome back.</h1><p>Your creative space is ready when you are.</p></div><div class="settings"><button id="accountSettings">⚙ &nbsp; Workspace settings</button><button id="accountExport">⇩ &nbsp; Export project source</button><button>ⓘ &nbsp; EVORA CODE V3.2 · Black Silver Edition</button></div></section>
 </main></div>
 <nav class="bottom"><button class="active" data-page="editorView"><span class="ico">▦</span>Home</button><button data-page="projects"><span class="ico">▣</span>Projects</button><button data-page="ai"><span class="ico">▤</span>Notes</button><button data-page="preview"><span class="ico">◉</span>Preview</button><button data-page="account"><span class="ico">◌</span>Account</button></nav>
 <div class="modal" id="settingsModal"><div class="dialog"><div style="display:flex;justify-content:space-between"><div><span class="eyebrow">PREFERENCES</span><h2 style="font:600 23px 'Space Grotesk'">Workspace settings</h2></div><button id="settingsClose" style="background:none;border:0;color:#aab4c2">✕</button></div><label style="font-size:10px;color:#aeb8c4">Project name<input value="MY FIRST PROJECT" id="projectName"></label><p style="font-size:10px;color:#87919e">Black Silver Edition · Local autosave enabled</p><button class="primary" id="settingsSave" style="width:100%">SAVE PREFERENCES</button></div></div>
@@ -93,55 +93,43 @@ const defaults={
 'app.js':`// Add your JavaScript here\nconsole.log('EVORA CODE is ready.');`
 };
 let data={...defaults},active='index.html';
-let notes=[],activeNoteId=null;try{notes=JSON.parse(localStorage.getItem('evora-v3-notes'))||[]}catch(e){}
-try{data=JSON.parse(localStorage.getItem('evora-v3-files'))||data}catch(e){}
+let notes=[],activeNoteId=null;
+try{const savedNotes=JSON.parse(localStorage.getItem('evora-v3-notes')||'[]');notes=Array.isArray(savedNotes)?savedNotes.filter(n=>n&&typeof n==='object').map((n,i)=>({id:String(n.id||('legacy-'+i)),title:String(n.title||'Untitled note'),body:String(n.body||''),updated:Number(n.updated)||Date.now()})):[]}catch(e){notes=[]}
+try{const savedFiles=JSON.parse(localStorage.getItem('evora-v3-files')||'null');if(savedFiles&&typeof savedFiles==='object'&&!Array.isArray(savedFiles))data={...defaults,...savedFiles}}catch(e){}
 const $=id=>document.getElementById(id);
 function toast(msg){$('toast').textContent=msg;$('toast').hidden=false;setTimeout(()=>$('toast').hidden=true,2200)}
-function persist(){localStorage.setItem('evora-v3-files',JSON.stringify(data));$('panelStatus').textContent='SAVED'}
+function persist(){try{localStorage.setItem('evora-v3-files',JSON.stringify(data));$('panelStatus').textContent='SAVED';return true}catch(e){$('panelStatus').textContent='SAVE FAILED';toast('Storage unavailable — export your project');return false}}
 function renderFiles(){$('files').innerHTML='';Object.keys(data).forEach(name=>{const b=document.createElement('button');b.className='file'+(name===active?' active':'');b.textContent='◇  '+name;b.onclick=()=>selectFile(name);$('files').appendChild(b)})}
 function selectFile(name){active=name;$('tabName').textContent=name;$('code').value=data[name];renderFiles();lines();highlight()}
 function escapeHTML(value){return value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function highlight(){const value=$('code').value,ext=active.split('.').pop().toLowerCase(),lang=ext==='html'||ext==='htm'?'markup':ext==='css'?'css':(['js','jsx','ts','tsx','mjs'].includes(ext)?'javascript':null),grammar=lang&&window.Prism&&Prism.languages[lang];$('highlightCode').innerHTML=grammar?Prism.highlight(value,grammar,lang):escapeHTML(value);if(value.endsWith('\\n'))$('highlightCode').innerHTML+=' ';}
 
 function lines(){const v=$('code').value;$('numbers').textContent=Array.from({length:Math.max(1,v.split('\n').length)},(_,i)=>i+1).join('\n');$('charCount').textContent=v.length+' characters';highlight()}
-function buildPreviewDocument(){let h=data['index.html']||'<h1>Create index.html to start</h1>',c=data['style.css']||'',j=data['app.js']||'';h=h.replace('</head>',`<style>${c.replace(/<\/style/gi,'<\\/style')}
-.codewrap{position:relative;flex:1;min-width:0;overflow:hidden}
-.codewrap .highlight,.codewrap .code{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0 12px 30px 0;border:0;white-space:pre;tab-size:2;overflow:auto;font:12px/22px ui-monospace,SFMono-Regular,Consolas,monospace}
-.codewrap .highlight{pointer-events:none;color:#cbd3de;background:transparent}.codewrap .highlight code{font:inherit}
-.codewrap .code{z-index:2;resize:none;background:transparent;color:transparent;caret-color:#f4f6fa;outline:0;-webkit-text-fill-color:transparent;overflow:auto}
-.codewrap .code::selection{background:#8798b755}
-.codewrap .highlight .token.comment,.codewrap .highlight .token.prolog,.codewrap .highlight .token.doctype{color:#778391;font-style:italic}
-.codewrap .highlight .token.punctuation{color:#aab4c1}
-.codewrap .highlight .token.tag,.codewrap .highlight .token.selector,.codewrap .highlight .token.keyword{color:#d6a6ff}
-.codewrap .highlight .token.attr-name,.codewrap .highlight .token.property{color:#8fc7ed}
-.codewrap .highlight .token.attr-value,.codewrap .highlight .token.string{color:#b8d99a}
-.codewrap .highlight .token.function{color:#f0ca8b}
-.codewrap .highlight .token.number,.codewrap .highlight .token.boolean{color:#e9a5a5}
-.codewrap .highlight .token.operator{color:#c6cbd3}.codewrap .highlight .token.class-name{color:#80d5ce}
-.notes-wrap{max-width:1100px;margin:0 auto;height:100%;display:flex;flex-direction:column}
-.notes-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
-.notes-heading h1{font:600 clamp(40px,6vw,60px)/1 'Space Grotesk';letter-spacing:-.06em;margin:12px 0}
-.notes-layout{display:grid;grid-template-columns:minmax(180px,260px) minmax(0,1fr);gap:14px;flex:1;min-height:300px}
-.notes-list-panel,.note-editor{border:1px solid #2b323c;background:linear-gradient(145deg,#15191f,#101318);border-radius:11px;overflow:hidden}
-.notes-list-title{height:43px;border-bottom:1px solid #2a3039;padding:0 13px;display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:.15em;color:#9ba6b4;font-weight:bold}
-.notes-list-title span{border:1px solid #3b4552;border-radius:20px;padding:3px 7px;color:#c4ccd6}
-.notes-list{padding:7px;overflow:auto;max-height:calc(100% - 43px)}
-.note-item{width:100%;display:block;text-align:left;border:1px solid transparent;border-radius:7px;background:transparent;padding:11px 10px;color:#aeb7c3;margin-bottom:4px}
-.note-item:hover{background:#202630}.note-item.active{background:#252c36;border-color:#424c5a}
-.note-item b{display:block;font-size:11px;color:#e4e8ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.note-item small{display:block;color:#7e8997;font-size:9px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.notes-empty{padding:18px 10px;color:#7e8997;font-size:10px;line-height:1.6;text-align:center}
-.note-editor{display:flex;flex-direction:column;padding:0 17px}
-.note-editor-top{height:44px;border-bottom:1px solid #2a3039;display:flex;align-items:center;justify-content:space-between;color:#8994a2;font-size:9px;letter-spacing:.12em}
-.note-editor-top>div{display:flex;gap:6px}
-.note-action{border:1px solid #3b4552;background:#1b2028;color:#cbd2dc;border-radius:5px;padding:6px 9px;font-size:9px}
-.note-action:disabled{opacity:.35;cursor:not-allowed}
-.note-title{border:0;border-bottom:1px solid #242b34;background:transparent;color:#f0f2f6;font:600 22px 'Space Grotesk';padding:19px 0 14px;outline:0;width:100%}
-.note-body{flex:1;min-height:180px;resize:none;border:0;background:transparent;color:#c3cbd6;padding:16px 0;font:12px/1.8 'DM Sans',sans-serif;outline:0}
-.note-title:disabled,.note-body:disabled{opacity:.4}
-.note-foot{height:34px;border-top:1px solid #252c35;display:flex;align-items:center;justify-content:space-between;color:#74808e;font-size:9px}
-@media(max-width:700px){.codewrap .highlight,.codewrap .code{font-size:11px;line-height:20px;padding-right:8px}.notes-heading{align-items:flex-start}.notes-layout{grid-template-columns:1fr;grid-template-rows:minmax(120px,35%) minmax(240px,1fr)}.notes-list{display:flex;gap:6px;max-height:none;overflow-x:auto;overflow-y:hidden}.note-item{min-width:145px;max-width:180px;height:66px;margin:0}.note-editor{min-height:250px}.note-title{font-size:19px}}
-</style>\n</head>`).replace('</body>',`<script>${j.replace(/<\/script/gi,'<\\/script')}<\/script></body>`);return h}
+function buildPreviewDocument(){
+  const entryName=/\.html?$/i.test(active)&&data[active]?active:'index.html';
+  let html=String(data[entryName]||'<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EVORA Project</title></head><body><h1>Create index.html to start</h1></body></html>');
+  const cssFiles=Object.entries(data).filter(([name])=>/\.css$/i.test(name));
+  const jsFiles=Object.entries(data).filter(([name])=>/\.(js|mjs)$/i.test(name));
+  // Local project assets are embedded so they work in Preview and in the standalone Run tab.
+  for(const [name] of cssFiles){
+    const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    html=html.replace(new RegExp("<link\\b(?=[^>]*href=[\"\']"+escaped+"[\"\'])[^>]*>","gi"),'');
+  }
+  for(const [name] of jsFiles){
+    const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    html=html.replace(new RegExp("<script\\b(?=[^>]*src=[\"\']"+escaped+"[\"\'])[^>]*>[\\s\\S]*?<\\/script\\s*>","gi"),'');
+    html=html.replace(new RegExp("<script\\b(?=[^>]*src=[\"\']"+escaped+"[\"\'])[^>]*\\/?>","gi"),'');
+  }
+  const styles=cssFiles.map(([name,code])=>'/* '+name.replace(/\*\//g,'* /')+' */\n'+code.replace(/<\/style/gi,'<\\/style')).join('\n');
+  const scripts=jsFiles.map(([name,code])=>'/* '+name.replace(/\*\//g,'* /')+' */\n'+code.replace(/<\/script/gi,'<\\/script')).join('\n;\n');
+  const styleTag=styles?'<style data-evora-project="styles">\n'+styles+'\n</style>':'';
+  const scriptTag=scripts?'<script data-evora-project="scripts">\n'+scripts+'\n<\/script>':'';
+  if(/<\/head\s*>/i.test(html))html=html.replace(/<\/head\s*>/i,styleTag+'</head>');
+  else html=styleTag+html;
+  if(/<\/body\s*>/i.test(html))html=html.replace(/<\/body\s*>/i,scriptTag+'</body>');
+  else html+=scriptTag;
+  return html;
+}
 function preview(){ $('frame').srcdoc=buildPreviewDocument() }
 function runInNewTab(){
   const output=buildPreviewDocument();
@@ -149,7 +137,7 @@ function runInNewTab(){
   if(!win){toast('Allow pop-ups to open the run page');return}
   const shell=`<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090a0c"><title>EVORA CODE — Run Preview</title><style>
   *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#090a0c;color:#e9edf3;font-family:Arial,sans-serif}.run-shell{height:100dvh;display:flex;flex-direction:column;overflow:hidden}.run-head{height:54px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#101318;border-bottom:1px solid #303743}.run-brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em}.run-mark{width:28px;height:28px;border:1px solid #9ba6b5;border-radius:8px;display:grid;place-items:center;color:#f1f4f8;background:linear-gradient(145deg,#343c48,#11151b);font-size:17px}.run-label{font-size:9px;letter-spacing:.16em;color:#8994a2;margin-left:8px}.run-actions{display:flex;gap:7px}.run-actions button{border:1px solid #414b59;border-radius:6px;padding:8px 11px;background:#1a2029;color:#dce2e9;font-size:10px;cursor:pointer}.run-actions button.primary{background:#dce2e9;color:#11151b;border-color:#dce2e9;font-weight:700}.run-content{flex:1;min-height:0;background:#fff}.run-content iframe{width:100%;height:100%;border:0;display:block;background:white}.run-foot{min-height:34px;flex:none;display:flex;align-items:center;justify-content:center;padding:7px 12px;background:#101318;border-top:1px solid #303743;color:#8e99a7;font-size:9px;letter-spacing:.04em;text-align:center}.run-foot strong{color:#cbd2dc;font-weight:600}.run-foot .wine{color:#b9c2ce;margin:0 4px}@media(max-width:480px){.run-head{height:50px;padding:0 10px}.run-label{display:none}.run-actions button{padding:7px 9px;font-size:9px}.run-brand{font-size:10px}.run-foot{font-size:8px}}
-  </style></head><body><div class="run-shell"><header class="run-head"><div class="run-brand"><span class="run-mark">E</span><span>EVORA CODE</span><span class="run-label">RUN PREVIEW</span></div><div class="run-actions"><button id="reloadRun">↻ &nbsp; Reload</button><button class="primary" id="closeRun">✕ &nbsp; Close</button></div></header><main class="run-content"><iframe id="runOutput" title="Your project running" sandbox="allow-scripts allow-forms allow-modals allow-popups"></iframe></main><footer class="run-foot">© 2026 <strong>EVORA CODE</strong><span class="wine">·</span> A product by <strong>WINE 🍷</strong><span class="wine">·</span> All rights reserved.</footer></div></body></html>`;
+  </style></head><body><div class="run-shell"><header class="run-head"><div class="run-brand"><span class="run-mark">E</span><span>EVORA CODE</span><span class="run-label">RUN PREVIEW</span></div><div class="run-actions"><button id="reloadRun">↻ &nbsp; Reload</button><button class="primary" id="closeRun">✕ &nbsp; Close</button></div></header><main class="run-content"><iframe id="runOutput" title="Your project running" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-downloads"></iframe></main><footer class="run-foot">© 2026 <strong>EVORA CODE</strong><span class="wine">·</span> A product by <strong>WINE 🍷</strong><span class="wine">·</span> All rights reserved.</footer></div></body></html>`;
   win.document.open();win.document.write(shell);win.document.close();
   win.document.getElementById('runOutput').srcdoc=output;
   win.document.getElementById('reloadRun').onclick=()=>{win.document.getElementById('runOutput').srcdoc=output};
@@ -161,23 +149,21 @@ $('code').addEventListener('input',e=>{data[active]=e.target.value;lines();persi
 $('code').addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();let a=e.target.selectionStart,b=e.target.selectionEnd;e.target.setRangeText('  ',a,b,'end');e.target.dispatchEvent(new Event('input'))}});
 document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>page(b.dataset.page));
 $('run').onclick=runInNewTab;$('refresh').onclick=()=>{preview();toast('Preview refreshed')};
-$('save').onclick=()=>{persist();toast('Workspace saved')};
+$('save').onclick=()=>{if(persist())toast('Workspace saved')};
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(data[active]);toast('Code copied')}catch(e){toast('Clipboard unavailable')}};
 function exportProject(){const blob=new Blob([Object.entries(data).map(([n,c])=>`/* ===== ${n} ===== */\n${c}`).join('\n\n')],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='evora-code-project-source.txt';a.click();URL.revokeObjectURL(a.href);toast('Source export downloaded')}
 $('export').onclick=exportProject;$('accountExport').onclick=exportProject;
 $('newFile').onclick=()=>$('fileModal').classList.add('show');$('fileClose').onclick=()=>$('fileModal').classList.remove('show');
-$('fileCreate').onclick=()=>{const n=$('fileName').value.trim();if(!n)return;if(data[n]){toast('File already exists');return}data[n]='// '+n+'\n';persist();selectFile(n);$('fileModal').classList.remove('show');$('fileName').value='';toast('File created')};
+$('fileCreate').onclick=()=>{const n=$('fileName').value.trim();if(!n)return;if(Object.prototype.hasOwnProperty.call(data,n)){toast('File already exists');return}data[n]='// '+n+'\n';persist();selectFile(n);$('fileModal').classList.remove('show');$('fileName').value='';toast('File created')};
 $('menu').onclick=()=>$('sidebar').classList.toggle('hidden');$('hideSide').onclick=()=>$('sidebar').classList.add('hidden');
 function openSettings(){$('settingsModal').classList.add('show')}$('settingsOpen').onclick=openSettings;$('settingsRail').onclick=openSettings;$('accountSettings').onclick=openSettings;$('settingsClose').onclick=()=>$('settingsModal').classList.remove('show');$('settingsSave').onclick=()=>{$('settingsModal').classList.remove('show');toast('Preferences saved')};
 $('openEditor').onclick=()=>page('editorView');
-function send(){const input=$('chatInput'),v=input.value.trim();if(!v)return;const m=document.createElement('div');m.className='msg user';m.textContent=v;$('messages').appendChild(m);const r=document.createElement('div');r.className='msg';r.textContent='This starter version does not yet connect to a live AI model. To enable real AI responses, connect a secure server endpoint and keep your API key on the server—not in this browser app.';$('messages').appendChild(r);input.value='';$('messages').scrollTop=$('messages').scrollHeight}
-$('send').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});document.querySelectorAll('[data-prompt]').forEach(b=>b.onclick=()=>{$('chatInput').value=b.dataset.prompt;$('chatInput').focus()});
 renderFiles();selectFile(active);persist();
 
-function persistNotes(){localStorage.setItem('evora-v3-notes',JSON.stringify(notes));$('noteCount').textContent=notes.length}
+function persistNotes(){try{localStorage.setItem('evora-v3-notes',JSON.stringify(notes));$('noteCount').textContent=notes.length;return true}catch(e){$('noteState').textContent='SAVE FAILED — EXPORT / COPY NOTE';$('noteUpdated').textContent='STORAGE UNAVAILABLE';return false}}
 function renderNotes(){$('notesList').innerHTML='';$('noteCount').textContent=notes.length;if(!notes.length){const e=document.createElement('div');e.className='notes-empty';e.textContent='No notes yet. Create your first note to save an idea.';$('notesList').appendChild(e)}notes.forEach(n=>{const b=document.createElement('button');b.className='note-item'+(n.id===activeNoteId?' active':'');const title=document.createElement('b');title.textContent=n.title||'Untitled note';const body=document.createElement('small');body.textContent=(n.body||'No additional text').replace(/\\s+/g,' ').slice(0,64);b.append(title,body);b.onclick=()=>selectNote(n.id);$('notesList').appendChild(b)})}
-function selectNote(id){activeNoteId=id;const n=notes.find(x=>x.id===id);if(!n)return;$('noteTitle').disabled=false;$('noteBody').disabled=false;$('deleteNote').disabled=false;$('saveNote').disabled=false;$('noteTitle').value=n.title;$('noteBody').value=n.body;$('noteState').textContent='EDITING NOTE';$('noteUpdated').textContent='SAVED LOCALLY';renderNotes()}
-function saveActiveNote(show=false){if(!activeNoteId)return;const n=notes.find(x=>x.id===activeNoteId);if(!n)return;n.title=$('noteTitle').value.trim()||'Untitled note';n.body=$('noteBody').value;n.updated=Date.now();persistNotes();renderNotes();$('noteState').textContent='ALL CHANGES SAVED';$('noteUpdated').textContent='JUST SAVED';if(show)toast('Note saved')}
+function selectNote(id){const n=notes.find(x=>x.id===id);if(!n)return;activeNoteId=id;$('noteTitle').disabled=false;$('noteBody').disabled=false;$('deleteNote').disabled=false;$('saveNote').disabled=false;$('noteTitle').value=n.title;$('noteBody').value=n.body;$('noteState').textContent='EDITING NOTE';$('noteUpdated').textContent='SAVED LOCALLY';renderNotes()}
+function saveActiveNote(show=false){if(!activeNoteId)return;const n=notes.find(x=>x.id===activeNoteId);if(!n)return;n.title=$('noteTitle').value.trim()||'Untitled note';n.body=$('noteBody').value;n.updated=Date.now();const ok=persistNotes();renderNotes();if(ok){$('noteState').textContent='ALL CHANGES SAVED';$('noteUpdated').textContent='JUST SAVED';if(show)toast('Note saved')}else if(show)toast('Could not save note — storage unavailable')}
 function createNote(){const n={id:String(Date.now())+Math.random().toString(16).slice(2,6),title:'Untitled note',body:'',updated:Date.now()};notes.unshift(n);persistNotes();selectNote(n.id);$('noteTitle').focus();toast('New note created')}
 $('addNote').onclick=createNote;$('saveNote').onclick=()=>saveActiveNote(true);$('noteTitle').addEventListener('input',()=>saveActiveNote());$('noteBody').addEventListener('input',()=>saveActiveNote());
 $('deleteNote').onclick=()=>{if(!activeNoteId)return;notes=notes.filter(n=>n.id!==activeNoteId);activeNoteId=null;persistNotes();renderNotes();$('noteTitle').value='';$('noteBody').value='';$('noteTitle').disabled=true;$('noteBody').disabled=true;$('deleteNote').disabled=true;$('saveNote').disabled=true;$('noteState').textContent='SELECT A NOTE';$('noteUpdated').textContent='LOCAL NOTES';toast('Note deleted')};

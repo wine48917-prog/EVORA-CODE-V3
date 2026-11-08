@@ -1,23 +1,24 @@
-# EVORA CODE V3.2 — Black Silver Edition
+# EVORA CODE V3.3 — Black Silver Edition
 
 A mobile-first browser coding workspace by WINE 🍷.
 
-## V3.2 updates
-- Run opens the project in a completely separate browser tab/page, outside the EVORA CODE workspace.
-- The standalone run page includes Reload and Close controls.
-- Added visible ownership notice: © 2026 EVORA CODE · A product by WINE 🍷 · All rights reserved.
-- The editor workspace remains open in its original tab.
+## Included
+- HTML, CSS and JavaScript editor with line numbers and syntax highlighting (Prism CDN; plain editing remains available offline).
+- Project files saved locally in the browser.
+- Notes with multiple titled entries, automatic saving, manual save and delete.
+- Live Preview and a separate Run window with reload/close controls.
+- Local CSS and JavaScript files are embedded into the HTML output when Preview/Run is started.
+- Export project source as a text file.
+- PWA manifest and EVORA SVG app mark.
 
-## Features
-- HTML, CSS and JavaScript starter workspace
-- Syntax highlighting (Prism CDN)
-- Local project file storage and source export
-- Multiple local notes with autosave
-- Separate run page and optional in-app preview
-- Black and silver responsive UI
+## Run
+Open `index.html` in a modern browser. For best PWA behavior and reliable storage, serve the folder from localhost or a static HTTPS host. Allow pop-ups when using Run so the standalone run page can open.
 
-## Notes
-- Syntax highlighting uses Prism from a CDN and needs an internet connection.
-- Projects and notes are stored in this browser's local storage. Export your source before clearing browser data.
-- Run opens a new browser tab. If it does not open, allow pop-ups for the site/browser.
-- This is a web app package, not an APK.
+## Supported runtime
+The built-in browser runner executes HTML, CSS, JavaScript and MJS files. Python, Java, C/C++, PHP, TypeScript/TSX and other server-side or compiled languages need their own runtime/compiler and are not executed by this browser-only build.
+
+## Storage
+Workspace files and notes are stored in this browser's local storage on this device. Export your project source regularly before clearing browser data or moving to another device.
+
+## Rights
+© 2026 EVORA CODE — A product by WINE 🍷. All rights reserved.

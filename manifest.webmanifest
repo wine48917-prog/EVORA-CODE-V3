@@ -1,9 +1,10 @@
 {
   "name": "EVORA CODE",
   "short_name": "EVORA",
-  "start_url": "./",
+  "description": "Black Silver developer workspace by WINE",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090a0c",
   "theme_color": "#090a0c",
-  "icons": [{"src":"evora-mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "icons": [{"src":"./evora-mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
